@@ -1,0 +1,101 @@
+# Author: Simon-Pierre Boucher — contact@spboucher.ai
+# File: project.yml
+# Description: XcodeGen definition of SP Wallet for macOS (native SwiftUI client of wallet.spboucher.ai). The shared engine room is the Swift package ../SPWalletCore.
+name: SPWallet
+options:
+  bundleIdPrefix: ai.spboucher
+  deploymentTarget:
+    macOS: "15.0"
+  createIntermediateGroups: true
+  developmentLanguage: fr
+packages:
+  SPWalletCore:
+    path: ../SPWalletCore
+settings:
+  base:
+    SWIFT_VERSION: "6.0"
+    MARKETING_VERSION: "1.0.0"
+    CURRENT_PROJECT_VERSION: "1"
+    DEVELOPMENT_TEAM: 3YM54G49SN
+    ENABLE_HARDENED_RUNTIME: YES
+    DEAD_CODE_STRIPPING: YES
+    ENABLE_USER_SCRIPT_SANDBOXING: YES
+    SWIFT_STRICT_CONCURRENCY: complete
+    CODE_SIGN_STYLE: Manual
+    CODE_SIGN_IDENTITY: "Developer ID Application"
+    CODE_SIGN_INJECT_BASE_ENTITLEMENTS: NO
+    OTHER_CODE_SIGN_FLAGS: "--timestamp"
+    GENERATE_INFOPLIST_FILE: NO
+  configs:
+    # Debug = the development variant "SP Wallet Dev": its own identifier, container and keychain item; it talks to a LOCAL
+    # throwaway stack (test keys, broadcast off) with a software passkey. None of that code exists in the Release binary.
+    Debug:
+      SWIFT_ACTIVE_COMPILATION_CONDITIONS: DEBUG SPW_DEV
+    Release:
+      ONLY_ACTIVE_ARCH: NO
+      SWIFT_COMPILATION_MODE: wholemodule
+targets:
+  SPWallet:
+    type: application
+    platform: macOS
+    sources:
+      - path: App
+      - path: Core
+      - path: Features
+      - path: Components
+      - path: Resources
+        excludes:
+          - "*.plist"
+          - "*.entitlements"
+          - "icon/**"
+    dependencies:
+      - package: SPWalletCore
+        product: SPWalletCore
+    settings:
+      base:
+        PRODUCT_MODULE_NAME: SPWallet
+        ASSETCATALOG_COMPILER_APPICON_NAME: AppIcon
+        ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME: AccentColor
+        COMBINE_HIDPI_IMAGES: YES
+      configs:
+        Debug:
+          PRODUCT_BUNDLE_IDENTIFIER: ai.spboucher.spwallet.dev
+          PRODUCT_NAME: SP Wallet Dev
+          INFOPLIST_FILE: Resources/Info-Dev.plist
+          CODE_SIGN_ENTITLEMENTS: Resources/SPWallet-Dev.entitlements
+          PROVISIONING_PROFILE_SPECIFIER: "SP Wallet Dev Developer ID"
+        Release:
+          PRODUCT_BUNDLE_IDENTIFIER: ai.spboucher.spwallet
+          PRODUCT_NAME: SP Wallet
+          INFOPLIST_FILE: Resources/Info.plist
+          CODE_SIGN_ENTITLEMENTS: Resources/SPWallet.entitlements
+          PROVISIONING_PROFILE_SPECIFIER: "SP Wallet Developer ID"
+  SPWalletTests:
+    type: bundle.unit-test
+    platform: macOS
+    sources:
+      - path: Tests
+    dependencies:
+      - target: SPWallet
+    settings:
+      base:
+        PRODUCT_BUNDLE_IDENTIFIER: ai.spboucher.spwallet.tests
+        GENERATE_INFOPLIST_FILE: YES
+        CODE_SIGN_STYLE: Automatic
+        CODE_SIGN_IDENTITY: "-"
+        ENABLE_HARDENED_RUNTIME: NO
+        BUNDLE_LOADER: "$(TEST_HOST)"
+        TEST_HOST: "$(BUILT_PRODUCTS_DIR)/SP Wallet Dev.app/Contents/MacOS/SP Wallet Dev"
+schemes:
+  SPWallet:
+    build:
+      targets:
+        SPWallet: all
+        SPWalletTests: [test]
+    run:
+      config: Debug
+    test:
+      config: Debug
+      targets: [SPWalletTests]
+    archive:
+      config: Release
