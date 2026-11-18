@@ -6,7 +6,9 @@ import SPWalletCore
 
 struct GateView: View {
     let model: AppModel
+    #if SPW_DEV
     @State private var devToken = UserDefaults.standard.string(forKey: "spwDevSetupToken") ?? ""
+    #endif
 
     var body: some View {
         ZStack {
@@ -28,6 +30,8 @@ struct GateView: View {
             }.padding(40)
         }
         .frame(maxWidth: .infinity, maxHeight: .infinity)
+        // the whole screen sits on the dark hero surface: secondary texts and the glass panel must use the dark appearance
+        .environment(\.colorScheme, .dark)
     }
 
     private var panel: some View {
@@ -57,7 +61,7 @@ struct GateView: View {
             }
         }
         .padding(26)
-        .background(.regularMaterial, in: RoundedRectangle(cornerRadius: 22, style: .continuous))
+        .background(.ultraThinMaterial, in: RoundedRectangle(cornerRadius: 22, style: .continuous))
         .overlay(RoundedRectangle(cornerRadius: 22, style: .continuous).strokeBorder(.white.opacity(0.18)))
         .shadow(color: .black.opacity(0.35), radius: 30, y: 14)
     }
