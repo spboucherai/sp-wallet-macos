@@ -38,6 +38,19 @@ enum ErrorText {
         "quote_moved": "Le prix a bougé depuis la cotation affichée. Rien n’a été préparé.",
         "mainnet_disabled": "Désactivé sur le serveur pour le réseau principal.",
         "execution_disabled": "L’exécution est désactivée sur le serveur.",
+        "policy": "Refusé par les limites du signataire.",
+        "vault_unconfirmed": "Le coffre THORChain n’a pas pu être confirmé par assez d’opérateurs indépendants : l’opération est refusée par prudence.",
+        "token_account_missing": "Le compte de jetons USDC du portefeuille n’existe pas encore sur Solana.",
+        "signer_too_old": "Le signataire en service ne prend pas en charge cette opération.",
+        "unsupported_network": "Réseau non pris en charge pour cette opération.",
+        "nft_disabled": "Le module NFT est désactivé sur le serveur.",
+        "nft_not_found": "NFT introuvable.",
+        "mandate_required": "Un mandat approuvé par passkey est requis.",
+        "insufficient_gas": "Solde insuffisant pour payer les frais de réseau.",
+        "fee_ceiling": "Les frais dépassent le plafond fixé par le signataire.",
+        "idempotency_mismatch": "Cette demande a déjà été utilisée pour une autre opération.",
+        "bad_state": "L’opération n’est plus dans un état qui permet cette action.",
+        "not_found": "Introuvable.",
     ]
 
     static func api(_ e: APIError) -> String {
@@ -54,6 +67,7 @@ enum ErrorText {
         case "address_poisoning_suspected": "ATTENTION : cette adresse ressemble à une adresse connue (mêmes début et fin) sans être la même. Vérifiez chaque caractère."
         case "contract_destination": "La destination est un contrat, pas un portefeuille."
         case "unfunded_destination": "Le compte de destination n’existe pas encore sur ce réseau."
+        case "swap_needs_approval": "Une autorisation de dépense (approbation ERC-20 du montant exact) précède l’échange."
         default: code
         }
     }

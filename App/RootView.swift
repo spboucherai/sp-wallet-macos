@@ -42,6 +42,8 @@ struct RootView: View {
             detail
                 .safeAreaInset(edge: .top, spacing: 0) { StatusStrip(model: model) }
         }
+        // alerts are watched (and notified) from sign-in, not only once the Alerts screen has been opened
+        .task(id: model.phase) { if model.phase == .signedIn { AlertsCenter.shared(model).start() } else { AlertsCenter.shared(model).stop() } }
         .toolbar {
             ToolbarItem(placement: .primaryAction) {
                 Button { Task { await model.refreshAll() } } label: { Label("Actualiser", systemImage: "arrow.clockwise") }

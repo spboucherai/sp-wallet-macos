@@ -12,12 +12,14 @@ struct RsJobsTab: View {
     var body: some View {
         Group {
             if let data {
-                HSplitView {
-                    list(data).frame(minWidth: 330, idealWidth: 380, maxWidth: 480)
+                // an HStack, not an HSplitView (see Features/Assets/AssetsView.swift: the AppKit split view breaks the window's layout)
+                HStack(spacing: 0) {
+                    list(data).frame(width: 380)
+                    Divider()
                     Group {
                         if data.selectedId != nil { RsJobDetailView(model: model, data: data) }
                         else { EmptyState(symbol: "sparkles.rectangle.stack", title: "Sélectionnez une recherche", detail: "Chaque recherche montre séparément ce que l’agent IA affirme, ce que le serveur a mesuré lui-même en backtest, et les données observées.") }
-                    }.frame(minWidth: 520, maxWidth: .infinity, maxHeight: .infinity)
+                    }.frame(maxWidth: .infinity, maxHeight: .infinity)
                 }
             } else { ProgressView().frame(maxWidth: .infinity, maxHeight: .infinity) }
         }
