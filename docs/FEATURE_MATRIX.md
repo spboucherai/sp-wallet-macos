@@ -18,7 +18,7 @@ Nothing in this table was executed with real funds. No real transaction was sent
 | 4 | Send (all networks) | implemented, tested; broadcast paths used for real by the owner on Ethereum | yes | form → draft → verified intent → review → passkey → tracking to finality | **E2E** incl. finalization, tampered intent, cancelled passkey, replay |
 | 5 | Receive | implemented | yes | addresses, local QR, payment URI | Seen |
 | 6 | Isolated signer, limits, anti-replay, expiry | implemented, tested | yes (m6ma) | never bypassed; limits and key id displayed read-only | E2E |
-| 7 | Passkey authentication (WebAuthn) | implemented | yes | system passkey sheet (AuthenticationServices); association file deployed | **Prod: sign-in screen reached; Touch ID sign-in to be confirmed by the owner** |
+| 7 | Passkey authentication (WebAuthn) | implemented | yes | system passkey sheet (AuthenticationServices); association file deployed | **Prod: Touch ID passkey sign-in confirmed by the owner (2026-11-18)** |
 | 8 | App lock (Touch ID) | n/a (local) | n/a | optional, authorizes nothing | Built |
 | 9 | Swaps — KyberSwap (8 EVM), Jupiter (Solana) | implemented, tested on forks; one real swap by the owner (Ethereum) | yes | quotes stream, executable vs comparison-only routes, verified intent review, tracking | Seen (quotes UI); execution **Built** |
 | 10 | Native cross-chain swaps (THORChain) | implemented; fails closed below 3 unanimous operators; never broadcast for real | yes | integrated in Swap; failure-closed explained | Built |

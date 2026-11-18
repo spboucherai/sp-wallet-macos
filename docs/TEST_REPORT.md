@@ -11,6 +11,7 @@
 | Release verification | all checks pass | `Scripts/verify-release.sh` |
 | Notarization | app `d61476ec-35be-4003-af73-ad0a5ed21faa` Accepted · DMG `8068d1e3-f023-4523-b9f0-8a51bb5dbc4e` Accepted; stapled; `spctl`: Notarized Developer ID | `Scripts/notarize.sh` |
 | Installation | copied from the mounted DMG to `/Applications`, launched, sign-in screen reached against production | manual |
+| Touch ID passkey sign-in against production (installed 1.0.0) | works — confirmed by the owner on 2026-11-18 | owner |
 
 The 25 end-to-end checks: session, 23 networks, 23 signer addresses, portfolio without invented balance, signer reachable / not
 halted, session token in the keychain, bad checksum / own address / excess decimals refused locally, transfer prepared and verified,
@@ -22,8 +23,6 @@ Measured on the development variant (M-series laptop): idle CPU 0.0 %, resident 
 
 ## What was NOT verified
 
-- **Touch ID / iCloud passkey sign-in against production**: needs the owner's passkey. The association file is served and present on
-  Apple's CDN; the release build carries the entitlement and its Developer ID profile.
 - Every **operation flow outside transfers** (swap, bridge, cross-chain swap, plans, NFT transfer, derivative orders, authorizations,
   collateral, mandates, API keys, research jobs): compiled, their screens were seen loading live data, but none was executed.
 - Anything with real funds or on a real venue account. No real transaction was sent by these tests.
