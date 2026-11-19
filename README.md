@@ -105,6 +105,8 @@ displays, prepares and carries the owner's passkey approvals; it never holds a p
 |---|---|---|---|
 | **SP Wallet** | Web + API — `wallet.spboucher.ai` | [git.spboucher.ai/sp-wallet](https://git.spboucher.ai/sp-wallet) | Backend, web app and isolated signer (the only holder of the keys) |
 | **SP Wallet for macOS** (this repository) | macOS 15+ native | [git.spboucher.ai/sp-wallet-macos](https://git.spboucher.ai/sp-wallet-macos) | Native client: display, preparation, verified passkey approvals |
+| **SP Wallet for iOS / iPadOS** | iOS · iPadOS native | [git.spboucher.ai/sp-wallet-ios](https://git.spboucher.ai/sp-wallet-ios) | Native iPhone and iPad client |
+| **SPWalletCore** | Shared Swift package | [git.spboucher.ai/sp-wallet-core](https://git.spboucher.ai/sp-wallet-core) | Models, API client, canonical objects and approval binding shared by the macOS and iOS apps |
 
 ---
 
