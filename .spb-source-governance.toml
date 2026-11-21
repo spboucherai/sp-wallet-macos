@@ -1,0 +1,31 @@
+# SP Boucher source governance — repository policy.
+# Read by `spb-header`; edit by hand, then run `spb-header apply`.
+# Canonical policy: SOURCE_HEADER_POLICY.md of the spb-source-governance repository.
+
+schema = 1
+engine = "1.0.0"
+slug = "sp-wallet-macos"
+project = "SP Wallet for macOS"
+category = "sp-app"
+status = "in-scope"
+repository_url = "https://git.spboucher.ai/sp-wallet-macos"
+project_url = ""
+version = ""
+contact = "support@spboucher.ai"
+classification = "Public"
+distribution = "Public repository; use is governed by the project license"
+
+[copyright]
+line = "Copyright (c) 2026"
+holder = "Simon-Pierre Boucher"
+oneline = "(c) 2026 Simon-Pierre Boucher"
+
+[license]
+name = "None specified (no license file in this repository)"
+spdx = ""
+file = ""
+
+[exclude]
+paths = []
+
+[variant]

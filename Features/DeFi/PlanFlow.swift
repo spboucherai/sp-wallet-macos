@@ -1,6 +1,99 @@
-// Author: Simon-Pierre Boucher — contact@spboucher.ai
-// File: Features/DeFi/PlanFlow.swift
-// Description: State machine of an any-to-any plan: quote candidate multi-leg routes (a read) → start one (stored by the server; nothing prepared or signed) → for each leg, when its turn comes: prepare it, verify it with the Core against the plan displayed, approve it with its own passkey prompt, wait until the chain settles it → next leg. After a pause the owner decides: retry, re-plan from the asset held, or stop. Nothing advances by itself and no leg is ever reported settled before the server read its output from the chain.
+// =============================================================================
+//                  SP BOUCHER | SOFTWARE & RESEARCH
+//             ARTIFICIAL INTELLIGENCE • FINANCE • ENGINEERING
+// =============================================================================
+//
+// PROJECT METADATA
+// -----------------------------------------------------------------------------
+// Project          : SP Wallet for macOS
+// File             : Features/DeFi/PlanFlow.swift
+// Description      : State machine of an any-to-any plan: quote candidate
+//                    multi-leg routes (a read) → start one (stored by the
+//                    server; nothing prepared or signed) → for each leg, when
+//                    its turn comes: prepare it, verify it with the Core
+//                    against the plan displayed, approve it with its own
+//                    passkey prompt, wait until the chain settles it → next
+//                    leg. After a pause the owner decides: retry, re-plan from
+//                    the asset held, or stop. Nothing advances by itself and no
+//                    leg is ever reported settled before the server read its
+//                    output from the chain.
+// Module           : Features
+// Repository       : https://git.spboucher.ai/sp-wallet-macos
+// Created          : 2026-11-18
+// Last Modified    : 2026-11-18
+//
+// =============================================================================
+// AUTHOR & PROFESSIONAL AFFILIATION
+// =============================================================================
+//
+// Author           : Simon-Pierre Boucher
+// Position         : Professor of Finance
+// Institution      : Université du Québec en Outaouais (UQO)
+// Department       : Département des sciences administratives
+// Organization     : SP Boucher
+//
+// Website          : https://spboucher.ai
+// Git              : https://git.spboucher.ai
+//
+// =============================================================================
+// OFFICIAL CONTACT DIRECTORY
+// =============================================================================
+//
+// General          : info@spboucher.ai
+// Professional     : contact@spboucher.ai
+// Direct           : simon@spboucher.ai
+// Research         : research@spboucher.ai
+// Development      : dev@spboucher.ai
+// Support          : support@spboucher.ai
+// Security/Admin   : admin@spboucher.ai
+// Notifications    : notifications@spboucher.ai
+//
+// Preferred Contact: support@spboucher.ai
+//
+// =============================================================================
+// COPYRIGHT & INTELLECTUAL PROPERTY
+// =============================================================================
+//
+// Copyright (c) 2026
+// Simon-Pierre Boucher
+//
+// All rights reserved where applicable.
+//
+// This file is governed by the applicable project license,
+// copyright notices, institutional agreements and relevant law.
+//
+// Unless expressly authorized by the applicable license or
+// rights holder, copying, redistribution, sublicensing,
+// publication and commercial exploitation are not permitted.
+//
+// Existing third-party rights and notices remain unaffected.
+//
+// =============================================================================
+// CONFIDENTIALITY & SECURITY
+// =============================================================================
+//
+// Classification   : Public
+// Distribution     : Public repository; use is governed by the project license
+// Security Contact : admin@spboucher.ai
+//
+// Access to this source does not independently grant permission
+// to redistribute or disclose confidential materials.
+//
+// Do not embed credentials, private keys, access tokens,
+// certificates or confidential personal information.
+//
+// =============================================================================
+// LICENSE & MAINTENANCE
+// =============================================================================
+//
+// License          : None specified (no license file in this repository)
+// Maintainer       : Simon-Pierre Boucher
+// Technical Contact: dev@spboucher.ai
+//
+// =============================================================================
+// END OF SP BOUCHER SOURCE HEADER
+// =============================================================================
+
 import Foundation
 import SPWalletCore
 

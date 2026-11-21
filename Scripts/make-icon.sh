@@ -1,7 +1,44 @@
 #!/usr/bin/env bash
-# Author: Simon-Pierre Boucher — contact@spboucher.ai
-# File: Scripts/make-icon.sh
-# Description: Renders Resources/icon/SPWallet.svg into the asset catalog's AppIcon set (all macOS sizes).
+# =============================================================================
+#                  SP BOUCHER | INFRASTRUCTURE & AUTOMATION
+#             ARTIFICIAL INTELLIGENCE • FINANCE • ENGINEERING
+# =============================================================================
+#
+# Project          : SP Wallet for macOS
+# File             : Scripts/make-icon.sh
+# Description      : Renders Resources/icon/SPWallet.svg into the asset
+#                    catalog's AppIcon set (all macOS sizes).
+# Module           : Scripts
+# Repository       : https://git.spboucher.ai/sp-wallet-macos
+# Created          : 2026-11-18
+# Last Modified    : 2026-11-18
+#
+# Author           : Simon-Pierre Boucher
+# Position         : Professor of Finance
+# Institution      : Université du Québec en Outaouais (UQO)
+# Organization     : SP Boucher
+# Website          : https://spboucher.ai
+# Git              : https://git.spboucher.ai
+#
+# Preferred Contact: support@spboucher.ai
+# Technical Contact: dev@spboucher.ai
+# Security/Admin   : admin@spboucher.ai
+#
+# Copyright (c) 2026
+# Simon-Pierre Boucher
+# All rights reserved where applicable. This file is governed by the
+# applicable project license, copyright notices and relevant law.
+# Existing third-party rights and notices remain unaffected.
+#
+# License          : None specified (no license file in this repository)
+#
+# Do not embed credentials, private keys, access tokens,
+# certificates or confidential personal information.
+#
+# =============================================================================
+# END OF SP BOUCHER SOURCE HEADER
+# =============================================================================
+
 set -euo pipefail
 cd "$(dirname "$0")/.."
 SRC="Resources/icon/SPWallet.svg"; OUT="Resources/Assets.xcassets/AppIcon.appiconset"

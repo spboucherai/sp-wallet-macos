@@ -1,6 +1,102 @@
-// Author: Simon-Pierre Boucher — contact@spboucher.ai
-// File: Features/Futures/FuturesVenueView.swift
-// Description: The venue side of live derivatives: the jurisdiction notice and the server locks with their reasons, the venues as the server lists them (dYdX and edgeX are market data only, with the server's jurisdiction reason), the lifecycle of the live venue account (creation in read-only, authorization of the dedicated trading key with the instruments and limits the owner chooses, revocation, recovery after a lost answer), the account's halt and its lifting, and the collateral (deposit through the pinned Arbitrum bridge, withdrawal to the wallet's own address) followed until the venue or the wallet confirms. Every form here only PREPARES: the passkey is asked on the review sheet.
+// =============================================================================
+//                  SP BOUCHER | SOFTWARE & RESEARCH
+//             ARTIFICIAL INTELLIGENCE • FINANCE • ENGINEERING
+// =============================================================================
+//
+// PROJECT METADATA
+// -----------------------------------------------------------------------------
+// Project          : SP Wallet for macOS
+// File             : Features/Futures/FuturesVenueView.swift
+// Description      : The venue side of live derivatives: the jurisdiction
+//                    notice and the server locks with their reasons, the venues
+//                    as the server lists them (dYdX and edgeX are market data
+//                    only, with the server's jurisdiction reason), the
+//                    lifecycle of the live venue account (creation in
+//                    read-only, authorization of the dedicated trading key with
+//                    the instruments and limits the owner chooses, revocation,
+//                    recovery after a lost answer), the account's halt and its
+//                    lifting, and the collateral (deposit through the pinned
+//                    Arbitrum bridge, withdrawal to the wallet's own address)
+//                    followed until the venue or the wallet confirms. Every
+//                    form here only PREPARES: the passkey is asked on the
+//                    review sheet.
+// Module           : Features
+// Repository       : https://git.spboucher.ai/sp-wallet-macos
+// Created          : 2026-11-18
+// Last Modified    : 2026-11-18
+//
+// =============================================================================
+// AUTHOR & PROFESSIONAL AFFILIATION
+// =============================================================================
+//
+// Author           : Simon-Pierre Boucher
+// Position         : Professor of Finance
+// Institution      : Université du Québec en Outaouais (UQO)
+// Department       : Département des sciences administratives
+// Organization     : SP Boucher
+//
+// Website          : https://spboucher.ai
+// Git              : https://git.spboucher.ai
+//
+// =============================================================================
+// OFFICIAL CONTACT DIRECTORY
+// =============================================================================
+//
+// General          : info@spboucher.ai
+// Professional     : contact@spboucher.ai
+// Direct           : simon@spboucher.ai
+// Research         : research@spboucher.ai
+// Development      : dev@spboucher.ai
+// Support          : support@spboucher.ai
+// Security/Admin   : admin@spboucher.ai
+// Notifications    : notifications@spboucher.ai
+//
+// Preferred Contact: support@spboucher.ai
+//
+// =============================================================================
+// COPYRIGHT & INTELLECTUAL PROPERTY
+// =============================================================================
+//
+// Copyright (c) 2026
+// Simon-Pierre Boucher
+//
+// All rights reserved where applicable.
+//
+// This file is governed by the applicable project license,
+// copyright notices, institutional agreements and relevant law.
+//
+// Unless expressly authorized by the applicable license or
+// rights holder, copying, redistribution, sublicensing,
+// publication and commercial exploitation are not permitted.
+//
+// Existing third-party rights and notices remain unaffected.
+//
+// =============================================================================
+// CONFIDENTIALITY & SECURITY
+// =============================================================================
+//
+// Classification   : Public
+// Distribution     : Public repository; use is governed by the project license
+// Security Contact : admin@spboucher.ai
+//
+// Access to this source does not independently grant permission
+// to redistribute or disclose confidential materials.
+//
+// Do not embed credentials, private keys, access tokens,
+// certificates or confidential personal information.
+//
+// =============================================================================
+// LICENSE & MAINTENANCE
+// =============================================================================
+//
+// License          : None specified (no license file in this repository)
+// Maintainer       : Simon-Pierre Boucher
+// Technical Contact: dev@spboucher.ai
+//
+// =============================================================================
+// END OF SP BOUCHER SOURCE HEADER
+// =============================================================================
+
 import SwiftUI
 import SPWalletCore
 

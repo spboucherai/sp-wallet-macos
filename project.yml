@@ -1,6 +1,16 @@
-# Author: Simon-Pierre Boucher — contact@spboucher.ai
-# File: project.yml
-# Description: XcodeGen definition of SP Wallet for macOS (native SwiftUI client of wallet.spboucher.ai). The shared engine room is the Swift package ../SPWalletCore.
+# =============================================================================
+# SP BOUCHER | SOURCE FILE
+# =============================================================================
+# Project      : SP Wallet for macOS
+# File         : project.yml
+# Author       : Simon-Pierre Boucher | https://spboucher.ai
+# Contact      : support@spboucher.ai
+# Copyright    : (c) 2026 Simon-Pierre Boucher
+# License      : None specified (no license file in this repository)
+# =============================================================================
+# END OF SP BOUCHER SOURCE HEADER
+# =============================================================================
+
 name: SPWallet
 options:
   bundleIdPrefix: ai.spboucher
